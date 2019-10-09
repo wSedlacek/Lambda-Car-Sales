@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { Car, AdditionalFeature } from './models/Car';
 import { store } from './state/app.store';
 import { HeaderComponent } from './components/header/header.component';
 import { AddedFeaturesComponent } from './components/added-features/added-features.component';
