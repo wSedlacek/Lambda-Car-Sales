@@ -7,12 +7,12 @@ export type AddFeatureAction = {
 
 export type RemoveFeatureAction = {
   type: 'REMOVE_FEATURE';
-  payload: number;
+  payload: AdditionalFeature;
 };
 
 export type CarActions = {
   addFeature?: (payload: AdditionalFeature) => void;
-  removeFeature?: (payload: number) => void;
+  removeFeature?: (payload: AdditionalFeature) => void;
 };
 
 export const addFeature = (payload: AdditionalFeature) => (
@@ -21,7 +21,7 @@ export const addFeature = (payload: AdditionalFeature) => (
   dispatch({ type: 'ADD_FEATURE', payload });
 };
 
-export const removeFeature = (payload: number) => (
+export const removeFeature = (payload: AdditionalFeature) => (
   dispatch: (action: RemoveFeatureAction) => void
 ) => {
   dispatch({ type: 'REMOVE_FEATURE', payload });

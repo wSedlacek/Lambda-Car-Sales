@@ -14,7 +14,7 @@ const AddedFeatureComponent = connect<{}, CarActions, AddedFeatureProps, {}>(
 )((props: AddedFeatureProps & CarActions) => {
   const removeFeature = () => {
     if (!props.removeFeature) return;
-    props.removeFeature(props.feature.id);
+    props.removeFeature(props.feature);
   };
 
   return (
