@@ -1,13 +1,13 @@
 import { Car, AdditionalFeature } from '../../models/Car';
 import { AddFeatureAction, RemoveFeatureAction } from './car.actions';
 
-export type CarType = {
+export type CarState = {
   additionalPrice: number;
   car: Car;
   additionalFeatures: AdditionalFeature[];
 };
 
-const initialState: CarType = {
+const initialState: CarState = {
   additionalPrice: 0,
   car: {
     price: 26395,

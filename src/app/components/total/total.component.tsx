@@ -1,22 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import { Car } from '../../models/Car';
-import { CarState } from '../../state/app.reducer';
+import { State } from '../../state/app.reducer';
 
-type TotalReduxProps = {
-  additionalPrice: number;
-  car: Car;
-};
+const TotalComponent = () => {
+  const additionalPrice = useSelector<State, number>((state) => state.car.additionalPrice);
+  const car = useSelector<State, Car>((state) => state.car.car);
 
-const TotalComponent = connect<TotalReduxProps, {}, {}, CarState>((state) => ({
-  additionalPrice: state.car.additionalPrice,
-  car: state.car.car,
-}))((props: TotalReduxProps) => {
   return (
     <div className='content'>
-      <h4>Total Amount: ${props.car.price + props.additionalPrice}</h4>
+      <h4>Total Amount: ${car.price + additionalPrice}</h4>
     </div>
   );
-});
+};
 
 export { TotalComponent };

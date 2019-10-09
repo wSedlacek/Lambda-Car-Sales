@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { carReducer, CarType } from './car/car.reducer';
+import { carReducer, CarState } from './car/car.reducer';
 
-export type CarState = {
-  car: CarType;
+export type State = {
+  car: CarState;
 };
 
 export const reducer = combineReducers({ car: carReducer });

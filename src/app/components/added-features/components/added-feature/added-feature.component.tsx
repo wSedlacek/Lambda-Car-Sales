@@ -1,30 +1,27 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { AdditionalFeature } from '../../../../models/Car';
-import { CarActions, removeFeature } from '../../../../state/app.actions';
+import { removeFeature } from '../../../../state/app.actions';
 
 type AddedFeatureProps = {
   feature: AdditionalFeature;
 };
 
-const AddedFeatureComponent = connect<{}, CarActions, AddedFeatureProps, {}>(
-  null,
-  { removeFeature }
-)((props: AddedFeatureProps & CarActions) => {
-  const removeFeature = () => {
-    if (!props.removeFeature) return;
-    props.removeFeature(props.feature);
+const AddedFeatureComponent = (props: AddedFeatureProps) => {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    removeFeature(props.feature)(dispatch);
   };
 
   return (
     <li>
-      <button className='button' onClick={removeFeature}>
+      <button className='button' onClick={handleClick}>
         X
       </button>
       {props.feature.name}
     </li>
   );
-});
+};
 
 export { AddedFeatureComponent };
