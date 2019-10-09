@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { Car } from '../../models/Car';
+import { CarState } from '../../state/app.reducer';
 
-type HeaderProps = {
+type HeaderReduxProps = {
   car: Car;
 };
 
-const HeaderComponent = (props: HeaderProps) => {
+const HeaderComponent = connect<HeaderReduxProps, {}, {}, CarState>((state) => ({
+  car: state.car.car,
+}))((props: HeaderReduxProps) => {
   return (
     <>
       <figure className='image is-128x128'>
@@ -16,6 +20,6 @@ const HeaderComponent = (props: HeaderProps) => {
       <p>Amount: ${props.car.price}</p>
     </>
   );
-};
+});
 
 export { HeaderComponent };

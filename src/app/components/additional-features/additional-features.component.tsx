@@ -1,12 +1,19 @@
 import React from 'react';
-import { AdditionalFeatureComponent } from './components/additional-feature/additional-feature.component';
-import { AdditionalFeature } from '../../models/Car';
+import { connect } from 'react-redux';
 
-type AdditionalFeaturesProps = {
+import { AdditionalFeature } from '../../models/Car';
+import { CarState } from '../../state/app.reducer';
+import { AdditionalFeatureComponent } from './components/additional-feature/additional-feature.component';
+
+type AdditionalFeaturesReduxProps = {
   store: AdditionalFeature[];
 };
 
-const AdditionalFeaturesComponent = (props: AdditionalFeaturesProps) => {
+const AdditionalFeaturesComponent = connect<AdditionalFeaturesReduxProps, {}, {}, CarState>(
+  (state) => ({
+    store: state.car.additionalFeatures,
+  })
+)((props: AdditionalFeaturesReduxProps) => {
   return (
     <div className='content'>
       <h4>Additional Features</h4>
@@ -21,6 +28,6 @@ const AdditionalFeaturesComponent = (props: AdditionalFeaturesProps) => {
       )}
     </div>
   );
-};
+});
 
 export { AdditionalFeaturesComponent };

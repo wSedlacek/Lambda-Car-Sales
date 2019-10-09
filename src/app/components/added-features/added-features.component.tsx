@@ -1,13 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { Car } from '../../models/Car';
+import { CarState } from '../../state/app.reducer';
 import { AddedFeatureComponent } from './components/added-feature/added-feature.component';
 
-type AddedFeaturesProps = {
+type AddedFeaturesReduxProps = {
   car: Car;
 };
 
-const AddedFeaturesComponent = (props: AddedFeaturesProps) => {
+const AddedFeaturesComponent = connect<AddedFeaturesReduxProps, {}, {}, CarState>((state) => ({
+  car: state.car.car,
+}))((props: AddedFeaturesReduxProps) => {
   return (
     <div className='content'>
       <h6>Added features:</h6>
@@ -22,6 +26,6 @@ const AddedFeaturesComponent = (props: AddedFeaturesProps) => {
       )}
     </div>
   );
-};
+});
 
 export { AddedFeaturesComponent };
